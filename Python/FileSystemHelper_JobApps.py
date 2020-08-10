@@ -5,6 +5,31 @@ import os
 import json
 import shutil
 
+
+'''
+FILESYSTEM HELPER - JOB APPS
+
+Whenever a Resume or Cover Letter is downloaded,
+my helper cleans up any old Resume or Cover Letters to prevent clutter
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class MyHandler(FileSystemEventHandler):
 	def __init__(self):
 		self.c_trigger = False

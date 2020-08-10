@@ -10,6 +10,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 
 
+'''
+Youtube2MP3 Converter + FileSystem Helper
+
+Uses youtube2mp3.com's free through Seleniums automated browser library.
+Uses eyed3 to add MetaData to the downloaded mp3 file before adding it to itunes library
+
+'''
 def metaData():
 	print("Meta.........")
 	global song,artist,album,added_file
