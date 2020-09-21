@@ -44,7 +44,7 @@ class MyHandler(FileSystemEventHandler):
 			if event.src_path.split("\\")[-1] == "Nathan Lee - Resume (1).pdf":
 				self.r_trigger = True
 			else:
-				self.r_trigger = 
+				self.r_trigger = False
 
 			if event.src_path.split("\\")[-1] == "Nathan Lee - Resume_CV (1).pdf":
 				self.rc_trigger = True
