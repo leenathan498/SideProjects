@@ -16,24 +16,23 @@ my helper cleans up any old Resume or Cover Letters to prevent clutter
 
 
 
+'''
+Main Handler Class 
 
+Through the use of triggers, delete duplicate files.
 
+Files Currently Being Checked For :
+	- Resume
+	- Cover Letter
+	- Resume/Cover Letter
 
-
-
-
-
-
-
-
-
-
-
+'''
 
 class MyHandler(FileSystemEventHandler):
 	def __init__(self):
 		self.c_trigger = False
 		self.r_trigger = False
+		self.rc_trigger = False
 
 	def on_modified(self,event):
 		if event.src_path[-4:] == ".pdf":
@@ -45,7 +44,12 @@ class MyHandler(FileSystemEventHandler):
 			if event.src_path.split("\\")[-1] == "Nathan Lee - Resume (1).pdf":
 				self.r_trigger = True
 			else:
-				self.r_trigger = False
+				self.r_trigger = 
+
+			if event.src_path.split("\\")[-1] == "Nathan Lee - Resume_CV (1).pdf":
+				self.rc_trigger = True
+			else:
+				self.rc_trigger = False
 
 
 folder_to_track = 'C:\\Users\\abcaa\\Downloads'
@@ -71,6 +75,13 @@ try:
 				os.rename(folder_to_track + "\\Nathan Lee - Resume (1).pdf",
 								 folder_to_track + "\\Nathan Lee - Resume.pdf")
 				event_handler.r_trigger = False
+
+		if event_handler.rc_trigger:
+			if os.path.isfile(folder_to_track + "\\Nathan Lee - Resume_CV (1).pdf"):
+				os.remove(folder_to_track + "\\Nathan Lee - Resume_CV.pdf")
+				os.rename(folder_to_track + "\\Nathan Lee - Resume_CV (1).pdf",
+								 folder_to_track + "\\Nathan Lee - Resume_CV.pdf")
+				event_handler.rc_trigger = False
 
 except KeyboardInterrupt:
 	observer.stop()
